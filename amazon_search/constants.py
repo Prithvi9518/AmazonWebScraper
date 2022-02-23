@@ -1,0 +1,1 @@
+AMAZON_URL = "https://www.amazon.co.uk/ref=nav_logo"
