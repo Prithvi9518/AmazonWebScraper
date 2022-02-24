@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 
 import amazon_search.constants as const
+from amazon_search.search_filter import SearchFilter
 
 
 class AmazonSearch(webdriver.Chrome):
@@ -34,4 +35,16 @@ class AmazonSearch(webdriver.Chrome):
 
         search_button = self.find_element(By.ID, 'nav-search-submit-button')
         search_button.click()
+
+    def apply_filter(self, desired_filter=0):
+
+        search_filter = SearchFilter(driver=self)
+
+        if desired_filter == 0:
+            return
+        elif desired_filter == 1:
+            search_filter.filter_by_customer_ratings()
+
+
+
 
