@@ -1,5 +1,6 @@
 import os
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 import amazon_search.constants as const
 
@@ -22,4 +23,14 @@ class AmazonSearch(webdriver.Chrome):
 
     def open_amazon(self):
         self.get(const.AMAZON_URL)
+
+    def accept_cookies(self):
+        accept_cookies_button = self.find_element(By.NAME, 'accept')
+        accept_cookies_button.click()
+
+    def search_item(self, item):
+        search_bar = self.find_element(By.ID, 'twotabsearchtextbox')
+        search_bar.send_keys(item)
+
+        # search_button = self.find_element()
 
