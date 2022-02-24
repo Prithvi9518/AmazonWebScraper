@@ -7,7 +7,7 @@ import amazon_search.constants as const
 
 class AmazonSearch(webdriver.Chrome):
 
-    def __init__(self, driver_path=r"C:\Users\prith\Desktop\Side-Learning\Python Projects\chromedriver_win32",
+    def __init__(self, driver_path=const.DEFAULT_DRIVER_PATH,
                  teardown=False):
         self.driver_path = driver_path
         self.teardown = teardown
@@ -32,5 +32,6 @@ class AmazonSearch(webdriver.Chrome):
         search_bar = self.find_element(By.ID, 'twotabsearchtextbox')
         search_bar.send_keys(item)
 
-        # search_button = self.find_element()
+        search_button = self.find_element(By.ID, 'nav-search-submit-button')
+        search_button.click()
 
