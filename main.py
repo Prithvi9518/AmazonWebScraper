@@ -1,4 +1,5 @@
 from amazon_search.amazon_search import AmazonSearch
+from amazon_search.filter_menu import FilterMenu
 
 
 def get_search_item_from_user():
@@ -17,14 +18,18 @@ def get_desired_filter():
 
 
 search_item = get_search_item_from_user()
-desired_filter = get_desired_filter()
+
+filter_menu = FilterMenu()
+
+filter_menu.choose_filters()
+desired_filters = filter_menu.filters
 
 with AmazonSearch(teardown=False) as bot:
 
     bot.open_amazon()
     bot.accept_cookies()
     bot.search_item(search_item)
-    bot.apply_filter(desired_filter)
+    bot.apply_filter(desired_filters)
 
 
 
