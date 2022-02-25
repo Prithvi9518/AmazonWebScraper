@@ -36,15 +36,14 @@ class AmazonSearch(webdriver.Chrome):
         search_button = self.find_element(By.ID, 'nav-search-submit-button')
         search_button.click()
 
-    def apply_filter(self, desired_filter=0):
+    def apply_filter(self, desired_filters):
 
         search_filter = SearchFilter(driver=self)
 
-        if desired_filter == 0:
+        if desired_filters[0] == 0:
             return
-        elif desired_filter == 1:
-            search_filter.filter_by_customer_ratings()
-
+        elif desired_filters[0] == 1:
+            search_filter.apply_customer_ratings_filter(desired_filters[1])
 
 
 
