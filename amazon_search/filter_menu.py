@@ -6,6 +6,8 @@ class FilterMenu:
         print("If you'd like, there are some filters available to narrow down your search. Press:")
         print("0- No filters")
         print("1- Filter by customer ratings")
+        print("2- Show today's deals")
+        print("3- Show all discounted products")
 
     def choose_filters(self):
         self.show_available_filters()
@@ -16,6 +18,10 @@ class FilterMenu:
     def add_filters(self, filter_choice):
         if filter_choice == 1:
             self.filter_by_customer_ratings()
+        elif filter_choice == 2:
+            print("Fetching today's deals...")
+        elif filter_choice == 3:
+            print("Fetching all discounted products...")
         else:
             print("No filters added.")
 
