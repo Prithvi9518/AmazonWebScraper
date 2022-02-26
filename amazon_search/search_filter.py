@@ -30,3 +30,20 @@ class SearchFilter:
             'a[data-routing]'
         )
         todays_deals_element.click()
+
+    def apply_discounted_products_filter(self):
+        all_discounts_element = self.driver.find_element(
+            By.ID,
+            'p_n_deal_type/26901100031'
+        )
+
+        if all_discounts_element is None:
+            print("The all discounts filter isn't available.")
+            return
+
+        all_discounts_link = all_discounts_element.find_element(
+            By.CSS_SELECTOR,
+            'a[data-routing]'
+        )
+
+        all_discounts_link.click()

@@ -46,6 +46,8 @@ class AmazonSearch(webdriver.Chrome):
             search_filter.apply_customer_ratings_filter(desired_filters[1])
         elif desired_filters[0] == 2:
             search_filter.apply_todays_deals_filter()
+        elif desired_filters[0] == 3:
+            search_filter.apply_discounted_products_filter()
 
 
 
