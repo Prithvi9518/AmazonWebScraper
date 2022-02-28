@@ -47,3 +47,13 @@ class SearchFilter:
         )
 
         all_discounts_link.click()
+
+    def filter_by_min_max_price(self, min_price, max_price):
+
+        min_price_element = self.driver.find_element(By.ID, "low-price")
+        max_price_element = self.driver.find_element(By.ID, "high-price")
+        go_button = self.driver.find_element(By.CSS_SELECTOR, "input[aria-labelledby='a-autoid-1-announce']")
+
+        min_price_element.send_keys(min_price)
+        max_price_element.send_keys(max_price)
+        go_button.click()
