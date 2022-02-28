@@ -48,6 +48,8 @@ class AmazonSearch(webdriver.Chrome):
             search_filter.apply_todays_deals_filter()
         elif desired_filters[0] == 3:
             search_filter.apply_discounted_products_filter()
+        elif desired_filters[0] == 4:
+            search_filter.filter_by_min_max_price(desired_filters[1], desired_filters[2])
 
 
 

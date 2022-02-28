@@ -8,6 +8,7 @@ class FilterMenu:
         print("1- Filter by customer ratings")
         print("2- Show today's deals")
         print("3- Show all discounted products")
+        print("4- Specify minimum and maximum price")
 
     def choose_filters(self):
         self.show_available_filters()
@@ -22,7 +23,9 @@ class FilterMenu:
             print("Fetching today's deals...")
         elif filter_choice == 3:
             print("Fetching all discounted products...")
-        else:
+        elif filter_choice == 4:
+            self.get_min_max_price()
+        elif filter_choice == 0:
             print("No filters added.")
 
     def filter_by_customer_ratings(self):
@@ -37,5 +40,14 @@ class FilterMenu:
         print("2- 2 Stars and Above")
         print("3- 3 Stars and Above")
         print("4- 4 Stars and Above")
+
+    def get_min_max_price(self):
+        min_price = input("Please enter the minimum price"
+                          " (Just press ENTER if no minimum price needs to be specified): ")
+        max_price = input("Please enter the maximum price "
+                          "(Just press ENTER if no maximum price needs to be specified): ")
+
+        self.filters.append(min_price)
+        self.filters.append(max_price)
 
 
