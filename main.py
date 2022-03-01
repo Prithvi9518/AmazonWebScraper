@@ -12,12 +12,16 @@ filter_menu = FilterMenu()
 filter_menu.choose_filters()
 desired_filters = filter_menu.filters
 
-with AmazonSearch(teardown=False) as bot:
+try:
+    with AmazonSearch(teardown=False) as bot:
 
-    bot.open_amazon()
-    bot.accept_cookies()
-    bot.search_item(search_item)
-    bot.apply_filter(desired_filters)
+        bot.open_amazon()
+        bot.accept_cookies()
+        bot.search_item(search_item)
+        bot.apply_filter(desired_filters)
+except Exception as e:
+    raise
+
 
 
 
