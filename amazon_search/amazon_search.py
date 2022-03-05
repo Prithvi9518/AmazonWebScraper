@@ -51,5 +51,34 @@ class AmazonSearch(webdriver.Chrome):
         elif desired_filters[0] == 4:
             search_filter.filter_by_min_max_price(desired_filters[1], desired_filters[2])
 
+    def get_results(self):
+        results_list = self.find_elements(By.CSS_SELECTOR, 'div[data-component-type="s-search-result"]')
+
+        for result in results_list:
+            result_header = result.find_element(
+                By.CSS_SELECTOR,
+                'span[class="a-size-medium a-color-base a-text-normal"]'
+            ).text
+
+            result_price_whole = result.find_element(
+                By.CSS_SELECTOR,
+                'span[class="a-price"]'
+            ).find_element(By.CSS_SELECTOR, 'span[class="a-price-whole"]').text
+
+            result_price_fraction = result.find_element(
+                By.CSS_SELECTOR,
+                'span[class="a-price"]'
+            ).find_element(By.CSS_SELECTOR, 'span[class="a-price-fraction"]').text
+
+            result_price_symbol = result.find_element(
+                By.CSS_SELECTOR,
+                'span[class="a-price"]'
+            ).find_element(By.CSS_SELECTOR, 'span[class="a-price-symbol"]').text
+
+            result_price = result_price_symbol + result_price_whole + "." + result_price_fraction
+
+            print(result_header + "\t" + result_price)
+
+
 
 
